@@ -1,0 +1,71 @@
+﻿@model Task_3.Models.VM_Vehicles
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+<p>
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file"/>
+        <button type="submit" asp-action="Upload">Upload File</button>
+    </form>
+</p>
+<p>
+        <form method="post" enctype="multipart/form-data">
+            <select type="text" name="type" id="type" asp-items="ViewBag.DownloadData"></select>
+            <button type="submit" asp-action="Download">download</button>
+        </form>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Reg
+            </th>
+            <th>
+                Make
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Colour
+            </th>
+            <th>
+                Fuel
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Vehicles) {
+        <tr>
+            <td>
+            @Html.DisplayFor(modelItem => item.Reg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Colour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fuel)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
